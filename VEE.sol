@@ -33,7 +33,8 @@ contract VEE is AccountManager, BIP {
         while (Op.graph_layer <= Op.graph_size) {
             for (uint i = 0; i < intents.length; i++) {
                 TxIntent storage intent = intents[i];
-                // Execute an eligible Tx, which is emulated by calling 
+                // Execute an eligible Tx, which is emulated by balance
+                // update on gateway_ and atomizer_.
                 if (intent.layer == Op.graph_layer) {
                     if (intent.northbound) {
                         gateway_.onExecute(
